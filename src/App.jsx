@@ -14,7 +14,7 @@ import { sortPlacesByDistance } from "./loc.js";
   );
 
 function App() {
-  const modal = useRef();
+
   const selectedPlace = useRef();
   const [modelIsOpen, setModelIsOpen] = useState(false);
   const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
@@ -37,8 +37,6 @@ function App() {
   // when the user selects a place
   // and when the user removes a place
   // and when the user adds a place
-
-
 
   function handleStartRemovePlace(id) {
     setModelIsOpen(true);
@@ -81,7 +79,7 @@ function App() {
 
   return (
     <>
-      <Modal open={modelIsOpen}>
+      <Modal open={modelIsOpen} onClose={handleStopRemovePlace}>
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
           onConfirm={handleRemovePlace}
