@@ -38,14 +38,7 @@ function App() {
   // and when the user removes a place
   // and when the user adds a place
 
-  navigator.geolocation.getCurrentPosition((position) => {
-    const sortedPlaces = sortPlacesByDistance(
-      AVAILABLE_PLACES,
-      position.coords.latitude,
-      position.coords.longitude
-    );
-    setAvailablePlace(sortedPlaces);
-  });
+
 
   function handleStartRemovePlace(id) {
     setModelIsOpen(true);
