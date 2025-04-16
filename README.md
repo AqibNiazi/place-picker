@@ -4,7 +4,7 @@ A simple and efficient **Place Picker** application that helps users select and 
 
 ## 🔗 Live Demo
 
-[Live Preview :](https://place-picker-bice.vercel.app/)
+[https://place-picker-bice.vercel.app/](https://place-picker-bice.vercel.app/)
 
 ## 🚀 Features
 
