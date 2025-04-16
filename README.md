@@ -2,9 +2,9 @@
 
 A simple and efficient **Place Picker** application that helps users select and organize destination places based on their current location. Users can pick favorite places for future visits, making trip planning easier and more personalized.
 
-## 🔗 GitHub Repository
+## 🔗 Live Demo
 
-[https://github.com/AqibNiazi/place-picker](https://github.com/AqibNiazi/place-picker)
+[Live Preview :](https://place-picker-bice.vercel.app/)
 
 ## 🚀 Features
 
