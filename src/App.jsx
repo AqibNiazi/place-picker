@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 import Places from "./components/Places.jsx";
 import { AVAILABLE_PLACES } from "./data.js";
@@ -8,13 +8,12 @@ import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
 // Get the user's current location and sort the available places by distance
-  const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
-  const storedPlaces = storedIds.map((id) =>
-    AVAILABLE_PLACES.find((place) => place.id === id)
-  );
+const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedPlaces = storedIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
 
 function App() {
-
   const selectedPlace = useRef();
   const [modelIsOpen, setModelIsOpen] = useState(false);
   const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
@@ -63,8 +62,7 @@ function App() {
       );
     }
   }
-
-  function handleRemovePlace() {
+  const handleRemovePlace = useCallback(function handleRemovePlace() {
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
@@ -75,7 +73,7 @@ function App() {
       "selectedPlaces",
       JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current))
     );
-  }
+  }, []);
 
   return (
     <>
