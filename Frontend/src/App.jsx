@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback } from "react";
 
 import Places from "./components/Places.jsx";
 import Modal from "./components/Modal.jsx";
@@ -12,11 +12,15 @@ import { useFetch } from "./hooks/useFetch.js";
 function App() {
   const selectedPlace = useRef();
   const [errorUpdatingPlaces, setErrorUpdatingPlaces] = useState();
-  const [userPlaces, setUserPlaces] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // Fetch user places from the server
-  const { fetchedData, error, isFetching } = useFetch(fetchUserPlaces, []);
+  const {
+    fetchedData: userPlaces,
+    error,
+    isFetching,
+    setFetchedData: setUserPlaces,
+  } = useFetch(fetchUserPlaces, []);
 
   function handleStartRemovePlace(place) {
     setModalIsOpen(true);
@@ -67,7 +71,7 @@ function App() {
 
       setModalIsOpen(false);
     },
-    [userPlaces]
+    [userPlaces, setUserPlaces]
   );
 
   const handleError = () => {
@@ -110,7 +114,7 @@ function App() {
             isLoading={isFetching}
             loadingText="Fetching your places..."
             fallbackText="Select the places you would like to visit below."
-            places={fetchedData}
+            places={userPlaces}
             onSelectPlace={handleStartRemovePlace}
           />
         )}
